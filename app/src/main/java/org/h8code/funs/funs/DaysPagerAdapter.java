@@ -16,7 +16,7 @@ public class DaysPagerAdapter extends PagerAdapter {
                 .inflate(R.layout.days_view, container, false);
 
         TextView textView = (TextView) view.findViewById(R.id.text);
-        textView.setText("Sample text");
+        textView.setText("Sample text " + position);
         container.addView(view);
         return view;
     }
@@ -38,6 +38,6 @@ public class DaysPagerAdapter extends PagerAdapter {
 
     @Override
     public String getPageTitle(int position) {
-        return "sample title";
+        return "sample title" + position;
     }
 }

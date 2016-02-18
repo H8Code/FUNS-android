@@ -16,7 +16,7 @@
         <com.nshmura.recyclertablayout.RecyclerTabLayout
             android:id="@+id/recycler_tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="16dp"
+            android:layout_height="32dp"
             android:background="@android:color/holo_blue_light"
             app:rtl_tabSelectedTextColor="@android:color/white"/>
     </LinearLayout>
