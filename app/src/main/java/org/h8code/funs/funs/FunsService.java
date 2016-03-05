@@ -5,6 +5,13 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
+
 public class FunsService extends Service {
 
     final String TAG = "FUNS_SERVICE";
@@ -27,6 +34,7 @@ public class FunsService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "Service onStartCommand");
+
         return START_STICKY;//super.onStartCommand(intent, flags, startId);
     }
 
