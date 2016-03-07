@@ -1,5 +1,7 @@
 package org.h8code.funs.funs;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,11 +23,13 @@ import android.view.MenuItem;
 
 import com.nshmura.recyclertablayout.RecyclerTabLayout;
 
+import layout.ScheduleFragment;
+
 public class NavigationDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     final String TAG = "FUNS";
-
-    private ViewPager daysPager;
+    private Fragment schedule_fragment;
+    private FragmentTransaction fragmentMngr;
 
     @Override
     protected void onDestroy() {
@@ -60,14 +64,14 @@ public class NavigationDrawer extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -78,14 +82,11 @@ public class NavigationDrawer extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        DaysPagerAdapter daysPagerAdapter = new DaysPagerAdapter();
-        daysPager = (ViewPager) findViewById(R.id.days_pager);
-        daysPager.setAdapter(daysPagerAdapter);
+        schedule_fragment = new ScheduleFragment();
 
-        RecyclerTabLayout daysView = (RecyclerTabLayout) findViewById(R.id.recycler_tab_layout);
-        daysView.setUpWithViewPager(daysPager);
-        daysView.setHasFixedSize(true);
-
+        fragmentMngr = getFragmentManager().beginTransaction();
+        fragmentMngr.add(R.id.content_frame, schedule_fragment);
+        fragmentMngr.commit();
     }
 
     @Override
@@ -127,7 +128,7 @@ public class NavigationDrawer extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            daysPager.setCurrentItem(666);
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_start_service) {
