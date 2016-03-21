@@ -2,16 +2,9 @@ package org.h8code.funs.funs;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -21,14 +14,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.nshmura.recyclertablayout.RecyclerTabLayout;
-
+import layout.LoginFragment;
 import layout.ScheduleFragment;
 
 public class NavigationDrawer extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        LoginFragment.onLoginButtonPressedListener {
     final String TAG = "FUNS";
     private Fragment schedule_fragment;
+    private Fragment login_fragment;
     private FragmentTransaction fragmentMngr;
 
     @Override
@@ -60,18 +54,9 @@ public class NavigationDrawer extends AppCompatActivity
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onStart");
 
-        setContentView(R.layout.activity_navigation_drawer);
+        setContentView(R.layout.slide_navigation_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -83,10 +68,9 @@ public class NavigationDrawer extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         schedule_fragment = new ScheduleFragment();
+        login_fragment = new LoginFragment();
 
-        fragmentMngr = getFragmentManager().beginTransaction();
-        fragmentMngr.add(R.id.content_frame, schedule_fragment);
-        fragmentMngr.commit();
+        switchFragment(schedule_fragment);
     }
 
     @Override
@@ -102,23 +86,26 @@ public class NavigationDrawer extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.navigation_drawer, menu);
+        getMenuInflater().inflate(R.menu.options_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_settings:
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    void switchFragment(Fragment fragment) {
+        fragmentMngr = getFragmentManager().beginTransaction();
+        fragmentMngr.replace(R.id.content_frame, fragment);
+        fragmentMngr.commit();
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -127,19 +114,28 @@ public class NavigationDrawer extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-
-        } else if (id == R.id.nav_gallery) {
-
+        if (id == R.id.nav_schedule) {
+            switchFragment(schedule_fragment);
+        }
+        else if (id == R.id.nav_schedules_list) {
+            Log.d(TAG, "sched list");
         } else if (id == R.id.nav_start_service) {
             startService(new Intent(this, FunsService.class));
-
         } else if (id == R.id.nav_stop_service) {
             stopService(new Intent(this, FunsService.class));
+        } else if (id == R.id.nav_login) {
+            switchFragment(login_fragment);
+        } else if (id == R.id.nav_logout) {
+            Log.d(TAG, "logout menu clicked");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void onLoginButtonPressed(String login, String password) {
+        Log.d(TAG, login + "|" + password);
+        switchFragment(schedule_fragment);
     }
 }

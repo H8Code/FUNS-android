@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_schedule"
+            android:checked="true"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Schedule" />
+        <item
+            android:id="@+id/nav_schedules_list"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Schedules list" />
+    </group>
+
+    <item android:title="Service">
+        <item
+            android:id="@+id/nav_start_service"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Start Service" />
+        <item
+            android:id="@+id/nav_stop_service"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="StopService" />
+    </item>
+
+    <item
+        android:id="@+id/nav_login"
+        android:checkable="true"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:title="Login" />
+
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="Logout" />
+
+</menu>
