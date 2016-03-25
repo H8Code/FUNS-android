@@ -136,6 +136,10 @@ public class NavigationDrawer extends AppCompatActivity
 
     public void onLoginButtonPressed(String login, String password) {
         Log.d(TAG, login + "|" + password);
+        startService(new Intent(this, FunsService.class)
+                .putExtra(FunsService.Request.REQUEST, FunsService.Request.LOGIN)
+                .putExtra("login", login)
+                .putExtra("password", password));
         switchFragment(schedule_fragment);
     }
 }
