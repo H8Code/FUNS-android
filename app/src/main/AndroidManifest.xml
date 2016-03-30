@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".NavigationDrawer"
+            android:name=".ui.NavigationDrawer"
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -22,12 +22,12 @@
         </activity>
 
         <service
-            android:name=".FunsService"
+            android:name=".service.FunsService"
             android:enabled="true"
             android:exported="true" />
         <provider
             android:authorities="org.h8code.funs.funs"
-            android:name=".FunsProvider" >
+            android:name=".provider.FunsProvider" >
         </provider>
     </application>
 </manifest>

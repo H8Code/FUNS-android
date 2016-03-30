@@ -1,4 +1,4 @@
-package org.h8code.funs.funs;
+package org.h8code.funs.funs.ui;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -14,8 +14,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import layout.LoginFragment;
-import layout.ScheduleFragment;
+import org.h8code.funs.funs.R;
+import org.h8code.funs.funs.ui.fragments.LoginFragment;
+import org.h8code.funs.funs.ui.fragments.ScheduleFragment;
+import org.h8code.funs.funs.service.FunsService;
 
 public class NavigationDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,

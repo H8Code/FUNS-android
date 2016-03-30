@@ -1,4 +1,4 @@
-package org.h8code.funs.funs;
+package org.h8code.funs.funs.service;
 
 import android.net.Uri;
 

@@ -1,7 +1,6 @@
-package layout;
+package org.h8code.funs.funs.ui.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -12,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.nshmura.recyclertablayout.RecyclerTabLayout;
 
-import org.h8code.funs.funs.DaysPagerAdapter;
+import org.h8code.funs.funs.ui.DaysPagerAdapter;
 import org.h8code.funs.funs.R;
 
 

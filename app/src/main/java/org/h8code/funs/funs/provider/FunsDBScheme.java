@@ -1,4 +1,4 @@
-package org.h8code.funs.funs;
+package org.h8code.funs.funs.provider;
 
 /**
  * Created by belial on 06.03.16.

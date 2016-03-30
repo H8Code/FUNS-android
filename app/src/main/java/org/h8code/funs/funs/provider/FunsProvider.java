@@ -1,4 +1,4 @@
-package org.h8code.funs.funs;
+package org.h8code.funs.funs.provider;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -13,8 +13,8 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
-import static org.h8code.funs.funs.FunsContentProviderUri.*;
-import static org.h8code.funs.funs.FunsDBScheme.*;
+import static org.h8code.funs.funs.service.FunsContentProviderUri.*;
+import static org.h8code.funs.funs.provider.FunsDBScheme.*;
 
 public class FunsProvider extends ContentProvider {
     private static final UriMatcher uri_matcher;

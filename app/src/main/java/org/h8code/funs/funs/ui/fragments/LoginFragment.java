@@ -1,4 +1,4 @@
-package layout;
+package org.h8code.funs.funs.ui.fragments;
 
 import android.app.Fragment;
 import android.content.Context;

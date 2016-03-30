@@ -1,15 +1,14 @@
-package org.h8code.funs.funs;
+package org.h8code.funs.funs.service;
 
 import android.app.Service;
-import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import org.h8code.funs.funs.provider.FunsDBScheme;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

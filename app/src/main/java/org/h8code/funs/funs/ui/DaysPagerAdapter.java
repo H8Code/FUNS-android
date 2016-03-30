@@ -1,10 +1,12 @@
-package org.h8code.funs.funs;
+package org.h8code.funs.funs.ui;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import org.h8code.funs.funs.R;
 
 /**
  * Created by belial on 15.02.16.

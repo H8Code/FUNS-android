@@ -1,16 +1,9 @@
-package org.h8code.funs.funs;
+package org.h8code.funs.funs.service;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
-
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import cz.msebera.android.httpclient.Header;
 
 public class FunsService extends Service {
     final String TAG = "FUNS_SERVICE";
