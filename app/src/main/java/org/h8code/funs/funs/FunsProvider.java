@@ -74,18 +74,23 @@ public class FunsProvider extends ContentProvider {
         int match__ = uri_matcher.match(uri);
         if (match__ == UriMatcher.NO_MATCH)
             throw new IllegalArgumentException("Wrong URI: " + uri);
-        db = db_helper.getWritableDatabase();
-        db.beginTransaction();
-        Uri result_uri;
-        try {
-            long row_id = db.insert(SCHEDULES_TABLE, null, values);
-            db.setTransactionSuccessful();
-            result_uri = ContentUris.withAppendedId(SCHEDULES_URI, row_id);
-            getContext().getContentResolver().notifyChange(result_uri, null);
-        } finally {
-            db.endTransaction();
+        switch (match__) {
+            case 1:
+                Log.d(TAG, "schedules insert");
+                Uri result_uri;
+                db = db_helper.getWritableDatabase();
+                db.beginTransaction();
+                try {
+                    long row_id = db.insertWithOnConflict(SCHEDULES_TABLE, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+                    db.setTransactionSuccessful();
+                    result_uri = ContentUris.withAppendedId(SCHEDULES_URI, row_id);
+                    getContext().getContentResolver().notifyChange(result_uri, null);
+                    return result_uri;
+                } finally {
+                    db.endTransaction();
+                }
         }
-        return result_uri;
+        return null;
     }
 
     @Override
@@ -110,7 +115,7 @@ public class FunsProvider extends ContentProvider {
         private static final String DB_NAME = "funs";
         private static final int DB_VERSION = 1;
 
-        private static final String type__ = " text, ";
+        private static final String type__ = " text,";
         private static final String DB_SCHEDULES_TABLE_CREATE =
                 "create table " + SCHEDULES_TABLE + "("
                         + SCHEDULES_ID + " text primary key, "

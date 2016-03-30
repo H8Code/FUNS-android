@@ -10,7 +10,7 @@ public class FunsDBScheme {
     public static final String SCHEDULES_ID = "_id";
     public static final String SCHEDULES_NAME = "name";
     public static final String SCHEDULES_INSTITUTION = "institution";
-    public static final String SCHEDULES_GROUP = "group";
+    public static final String SCHEDULES_GROUP = "group_";
     public static final String SCHEDULES_PERIOD_START = "period_start";
     public static final String SCHEDULES_PERIOD_END = "period_end";
     public static final String SCHEDULES_CREATOR = "creator";

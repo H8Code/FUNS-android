@@ -34,6 +34,11 @@ public class RestClient {
         client.post(null, abs_url(AUTH_PATH), entity, "application/json", responseHandler);
     }
 
+    public static void schedules(AsyncHttpResponseHandler responseHandler) {
+        Log.d(TAG, "GET on " + abs_url(SCHEDULES_PATH));
+        client.get(abs_url(SCHEDULES_PATH), responseHandler);
+    }
+
     private static String abs_url(String relative_url) {
         return BASE_URL + relative_url;
     }

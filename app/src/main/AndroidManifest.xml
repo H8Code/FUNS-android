@@ -25,5 +25,9 @@
             android:name=".FunsService"
             android:enabled="true"
             android:exported="true" />
+        <provider
+            android:authorities="org.h8code.funs.funs"
+            android:name=".FunsProvider" >
+        </provider>
     </application>
 </manifest>

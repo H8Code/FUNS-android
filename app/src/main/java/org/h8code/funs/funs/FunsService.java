@@ -34,7 +34,8 @@ public class FunsService extends Service {
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, "Service onCreate");
-        server = new AbstractServer();
+        server = new AbstractServer(this);
+
     }
 
     @Override
@@ -47,6 +48,7 @@ public class FunsService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "Service onStartCommand");
         handleIntent(intent);
+        server.schedules();
         return START_STICKY;//super.onStartCommand(intent, flags, startId);
     }
 
@@ -58,6 +60,9 @@ public class FunsService extends Service {
     }
 
     private void handleIntent(Intent intent) {
+        if (intent == null) {
+            return;
+        }
         switch (intent.getIntExtra(Request.REQUEST, Request.NONE)) {
             case Request.NONE:
                 return;
